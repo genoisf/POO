@@ -48,16 +48,37 @@ class NPC:
 
 class HÉROS(NPC):
     def attaquer(self, cible):
-        cible.subir(random(1.6))
+        de = random.randint(1.20)
+        if de == 20:
+            print("réussite critique")
+            cible.subir(random.randint(1,8))
+        elif de == 1:
+            print("échec critique")
+        else:
+            if de <= cible.armure:
+                print("le coup n’a pas fonctionné")
+            else:
+                print("le coup a réussi")
+                cible.subir(random.randint(1.6))
     def subir(self, dommage):
         self.pv -= dommage
 
 class KOBOLD(NPC):
     def attaquer(self, cible):
-        cible.subir(random(1.6))
+        de = random.randint(1.20)
+        if de == 20:
+            print("réussite critique")
+            cible.subir(random.randint(1.8))
+        elif de == 1:
+            print("échec critique")
+        else:
+            if de <= cible.armure:
+                print("le coup n’a pas fonctionné")
+            else:
+                print("le coup a réussi")
+                cible.subir(random.randint(1.6))
     def subir(self, dommage):
         self.pv -= dommage
 
 
 npc = NPC()
-kobold = KOBOLD()
